@@ -1,0 +1,20 @@
+title: OpenHome Wiki
+description: OpenHome service specifications and developer documentation.
+url: "https://wiki.openhome.org"
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+highlighter: rouge
+plugins:
+  - jekyll-redirect-from
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }
+exclude:
+  - export
+  - tools
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
