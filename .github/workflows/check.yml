@@ -1,0 +1,19 @@
+name: Check site
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - run: bundle exec jekyll build
+      # Internal links, anchors and images only; external links in old specs are often dead.
+      - run: bundle exec htmlproofer ./_site --disable-external --no-enforce-https --assume-extension .html
